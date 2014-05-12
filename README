@@ -12,6 +12,7 @@ Templating
 Instructions to setup:
 1. Clone the repo.
 2. Change the database settings in database.php residing in the application/config folder
-3. Setup a virtual host with the name of "directi.bestwatch.com"
+3. Import the DB tables using "bestwatch.sql"
+4. Setup a virtual host with the name of "directi.bestwatch.com"
 
 Run directi.bestwatch.com on localhost
