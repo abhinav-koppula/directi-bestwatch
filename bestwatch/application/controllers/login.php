@@ -67,13 +67,16 @@ class Login extends MY_Controller {
                     $insert_id = $this->mlogin->insert_fb_user($user_profile['name'], $user_profile['email']);
                     $this->load->model('musers');
                     $this->musers->update_profpic($insert_id, $profile_picture);
-                    $sess_array = array(
-                        'login_id' => $insert_id,
-                        'email' => $user_profile['email'],
-                        'name' => $user_profile['name'],
-                        'profile_pic' => $profile_picture
-                    );
-                    $this->session->set_userdata('logged_in', $sess_array);
+                    if(isset($user_profile['email']) && isset($user_profile['name']))
+                    {
+                        $sess_array = array(
+                            'login_id' => $insert_id,
+                            'email' => $user_profile['email'],
+                            'name' => $user_profile['name'],
+                            'profile_pic' => $profile_picture
+                        );
+                        $this->session->set_userdata('logged_in', $sess_array);
+                    }
                 }
                 redirect(base_url() . 'explore');
             } catch (FacebookApiException $e) {
